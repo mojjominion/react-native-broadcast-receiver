@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-barcode-scanner' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,6 +17,14 @@ const BarcodeScanner = NativeModules.BarcodeScanner
       }
     );
 
+const nativeEventEmitter = new NativeEventEmitter();
 export function multiply(a: number, b: number): Promise<number> {
   return BarcodeScanner.multiply(a, b);
+}
+
+interface BarcodeEventData {
+  barcode: string;
+}
+export function addEventListner(listener: (event: BarcodeEventData) => void) {
+  return nativeEventEmitter.addListener('BarcodeEvent', listener);
 }
