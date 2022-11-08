@@ -38,7 +38,7 @@ class BarcodeScannerModule(reactContext: ReactApplicationContext) :
 
   @SuppressLint("HardwareIds")
   @ReactMethod
-  fun getUniqueId(promise: Promise) {
+  fun getPhoneID(promise: Promise) {
     try {
       val secureId: String =
         Settings.Secure.getString(

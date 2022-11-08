@@ -1,7 +1,6 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import { addEventListner, multiply } from 'react-native-barcode-scanner';
+import { multiply, BarcodeScanner } from 'react-native-barcode-scanner';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -12,7 +11,9 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
-    const sub = addEventListner((d) => setScanned((x) => [...x, d.barcode]));
+    const sub = BarcodeScanner.addEventListner((d) =>
+      setScanned((x) => [...x, d.barcode])
+    );
     return () => sub.remove();
   }, []);
 
