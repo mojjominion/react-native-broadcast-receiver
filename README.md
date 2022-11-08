@@ -1,17 +1,17 @@
-# react-native-barcode-scanner
+# barcode-broadcast-receiver
 
 Native module for harware based scanners
 
 ## Installation
 
 ```sh
-npm install react-native-barcode-scanner
+npm install barcode-broadcast-receiver
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-barcode-scanner';
+import { multiply } from 'barcode-broadcast-receiver';
 
 // ...
 

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-barcode-scanner",
+  "name": "barcode-broadcast-receiver",
   "version": "0.1.0",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -40,13 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mojjominion/react-native-barcode-scanner",
+  "repository": "https://github.com/mojjominion/barcode-broadcast-receiver",
   "author": "Mohan <lmohan717@gmail.com> (https://github.com/mojjominion)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mojjominion/react-native-barcode-scanner/issues"
+    "url": "https://github.com/mojjominion/barcode-broadcast-receiver/issues"
   },
-  "homepage": "https://github.com/mojjominion/react-native-barcode-scanner#readme",
+  "homepage": "https://github.com/mojjominion/barcode-broadcast-receiver#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
