@@ -1,25 +1,19 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply, BarcodeScanner } from 'barcode-broadcast-receiver';
+import { BroadcastReceiver } from 'barcode-broadcast-receiver';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
   const [scanned, setScanned] = React.useState<string[]>(['']);
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
-  React.useEffect(() => {
-    const sub = BarcodeScanner.addEventListner((d) =>
-      setScanned((x) => [...x, d.barcode])
+    const sub = BroadcastReceiver.addEventListner((d) =>
+      setScanned((x) => [...x, d.data])
     );
     return () => sub.remove();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
       {scanned.map((t, i) => (
         <Text key={i}>Scanned: {t}</Text>
       ))}

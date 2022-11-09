@@ -1,38 +1,36 @@
+package com.barcodescanner
+
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.barcodescanner.BarcodeScannerModule
-import com.barcodescanner.IntentFilterMap
+import android.util.Log
 import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
 
 class BarcodeScannerReceiver : BroadcastReceiver() {
-  private var intentFilterMap = IntentFilterMap().getMap()
-
-  override fun onReceive(context: Context?, intent: Intent?) {
-    var data = getBarcode(intent)
-    if (data != null && data.isNotEmpty()) {
-      sendBarCode(data)
-    }
-  }
-
-  private fun getBarcode(intent: Intent?): String? {
-    var action = intent?.action
-    var bundle = intent?.extras
-    var barcodedata: String? = null
-
-    if (intentFilterMap.containsKey(action)) {
-      var dataKey = intentFilterMap[action]
-      barcodedata = bundle?.get(dataKey) as String?
+    override fun onReceive(context: Context?, intent: Intent?) {
+        val data = getDataFromIntent(intent)
+        if (data != null && data.isNotEmpty()) {
+            val params = Arguments.createMap()
+            params.putString(Constants.DataProp, data)
+            BarcodeScannerModule.sendEvent(Constants.BroadcastEventName, params)
+        }
     }
 
-    return barcodedata?.trim()
-  }
+    private fun getDataFromIntent(intent: Intent?): String? {
+        val action = intent?.action
+        var barcodedata: String? = null
+        val intentFilterMap = IntentConfiguration.getMap()
 
-  private fun sendBarCode(scannedData: String) {
-    val params: WritableMap = Arguments.createMap();
-    params.putString("barcode", scannedData);
-    BarcodeScannerModule.sendEvent("BarcodeEvent", params);
-  }
+        Log.d(TAG, intentFilterMap.toString())
+        if (intentFilterMap.containsKey(action)) {
+            val dataKey = intentFilterMap[action]
+            barcodedata = intent?.extras?.get(dataKey).toString()
+        }
 
+        return barcodedata?.trim()
+    }
+
+    companion object {
+        const val TAG = "Receiver"
+    }
 }
