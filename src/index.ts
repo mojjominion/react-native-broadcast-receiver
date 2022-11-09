@@ -1,7 +1,5 @@
-import { BroadcastReceiver } from './BroadcastReceiver';
+import { receiver } from './BroadcastReceiver';
 import { Constants } from './config';
-
-const receiver = new BroadcastReceiver();
 
 const ModuleName = Constants.MODULE_NAME;
 const BroadcastEvent = Constants.BROADCAST_EVENT_NAME;

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.IntentFilter
 import android.provider.Settings
 import android.util.Log
+import com.facebook.react.BuildConfig
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
@@ -38,6 +39,7 @@ class BarcodeScannerModule(reactContext: ReactApplicationContext) :
     fun setIntentConfig(args: ReadableArray, promise: Promise) {
         if (BuildConfig.DEBUG) {
             Log.d(name, args.toString())
+            Log.d(name, "addActions: register receiver")
         }
         val argsArray = args.toArrayList().filterIsInstance<List<String>>()
         val data = argsArray.map {
@@ -74,6 +76,9 @@ class BarcodeScannerModule(reactContext: ReactApplicationContext) :
     }
 
     private fun registerBroadcastReceiver() {
+        if (BuildConfig.DEBUG)
+            Log.d(name, "register receiver")
+
         val filter = IntentFilter()
         val filterMap = IntentConfiguration.getMap()
 

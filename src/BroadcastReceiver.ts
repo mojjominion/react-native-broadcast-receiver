@@ -1,7 +1,8 @@
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import { Constants, defaultConfig } from './config';
+import { LINKING_ERROR } from './error';
 import type * as t from './types';
-import { proxyModule, transformConfig } from './util';
+import { transformConfig } from './util';
 
 const nativeEventEmitter = new NativeEventEmitter();
 class BroadcastReceiver implements t.BroadcastReceiverInterface {
@@ -14,7 +15,14 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
   private getNativeModule = (): t.NativeModuleType => {
     return Constants.MODULE_NAME in NativeModules
       ? NativeModules[Constants.MODULE_NAME]
-      : proxyModule;
+      : new Proxy(
+          {},
+          {
+            get() {
+              throw new Error(LINKING_ERROR);
+            },
+          }
+        );
   };
 
   addEventListner(listener: (d: t.BarcodeEventData) => void) {
@@ -26,7 +34,7 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
 
   // Start Region :: Native modules methods
   setIntentActionConfig(args: t.IntentActionConfig) {
-    return this._nativeModule?.setIntentConfig(transformConfig(args));
+    return this._nativeModule.setIntentConfig(transformConfig(args));
   }
   getPhoneID() {
     return this._nativeModule.getPhoneID();
@@ -34,4 +42,5 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
 
   // Start Region :: Native modules methods
 }
-export { BroadcastReceiver };
+const receiver = new BroadcastReceiver();
+export { receiver };
