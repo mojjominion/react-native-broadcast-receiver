@@ -1,11 +1,11 @@
-# barcode-broadcast-receiver
+# react-native-broadcast-receiver
 
 Native module for harware based scanners
 
 ## Installation
 
 ```sh
-npm install barcode-broadcast-receiver
+npm install react-native-broadcast-receiver
 ```
 
 ### Usage
@@ -13,7 +13,7 @@ npm install barcode-broadcast-receiver
 #### 1. Listen to broadcast events
 
 ```js
-import { BroadcastReceiver } from 'barcode-broadcast-receiver';
+import { BroadcastReceiver } from 'react-native-broadcast-receiver';
 
 React.useEffect(() => {
   const sub = BroadcastReceiver.addEventListner((d) =>
@@ -26,7 +26,7 @@ React.useEffect(() => {
 #### 2. Listen to broadcast events `(with custom intent actions and extraDataKey)`
 
 ```js
-import { BroadcastReceiver } from 'barcode-broadcast-receiver';
+import { BroadcastReceiver } from 'react-native-broadcast-receiver';
 
 BroadcastReceiver.setIntentActionConfig([
   { action: 'com.zzzz.yyyy.action', datakey: '<data_key>' },

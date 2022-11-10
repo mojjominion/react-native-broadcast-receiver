@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  BarcodeScannerExample
+//  BroadcastReceiverExample
 //
 
 import Foundation

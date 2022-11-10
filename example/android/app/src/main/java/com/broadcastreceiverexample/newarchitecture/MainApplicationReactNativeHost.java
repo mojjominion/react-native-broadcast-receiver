@@ -1,4 +1,4 @@
-package com.barcodescannerexample.newarchitecture;
+package com.broadcastreceiverexample.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.barcodescannerexample.BuildConfig;
-import com.barcodescannerexample.newarchitecture.components.MainComponentsRegistry;
-import com.barcodescannerexample.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.broadcastreceiverexample.BuildConfig;
+import com.broadcastreceiverexample.newarchitecture.components.MainComponentsRegistry;
+import com.broadcastreceiverexample.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

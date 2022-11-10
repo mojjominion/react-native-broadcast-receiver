@@ -53,9 +53,9 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C or Swift files, open `example/ios/BarcodeScannerExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > barcode-broadcast-receiver`.
+To edit the Objective-C or Swift files, open `example/ios/BroadcastReceiverExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-broadcast-receiver`.
 
-To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `barcode-broadcast-receiver` under `Android`.
+To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `react-native-broadcast-receiver` under `Android`.
 
 ### Commit message convention
 

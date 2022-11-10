@@ -1,4 +1,4 @@
-package com.barcodescanner
+package com.broadcastreceiver
 
 import android.annotation.SuppressLint
 import android.content.IntentFilter
@@ -9,9 +9,9 @@ import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
 
-class BarcodeScannerModule(reactContext: ReactApplicationContext) :
+class BroadcastReceiverModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
-    private var broadcastReceiver = BarcodeScannerReceiver()
+    private var broadcastReceiver = BroadcastReceiverReceiver()
 
     init {
         cReactContext = reactContext

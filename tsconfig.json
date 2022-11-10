@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "barcode-broadcast-receiver": ["./src/index"]
+      "react-native-broadcast-receiver": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

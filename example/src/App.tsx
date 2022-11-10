@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { BroadcastReceiver } from 'barcode-broadcast-receiver';
+import { BroadcastReceiver } from 'react-native-broadcast-receiver';
 
 export default function App() {
   const [scanned, setScanned] = React.useState<string[]>(['']);

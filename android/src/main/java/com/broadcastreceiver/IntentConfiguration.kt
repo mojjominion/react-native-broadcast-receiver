@@ -1,4 +1,4 @@
-package com.barcodescanner
+package com.broadcastreceiver
 
 object IntentConfiguration {
     private val filterMap: MutableMap<String, String> = mutableMapOf(

@@ -1,5 +1,5 @@
 {
-  "name": "barcode-broadcast-receiver",
+  "name": "react-native-broadcast-receiver",
   "version": "0.2.2",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -40,13 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mojjominion/barcode-broadcast-receiver",
+  "repository": "https://github.com/mojjominion/react-native-broadcast-receiver",
   "author": "Mohan <lmohan717@gmail.com> (https://github.com/mojjominion)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mojjominion/barcode-broadcast-receiver/issues"
+    "url": "https://github.com/mojjominion/react-native-broadcast-receiver/issues"
   },
-  "homepage": "https://github.com/mojjominion/barcode-broadcast-receiver#readme",
+  "homepage": "https://github.com/mojjominion/react-native-broadcast-receiver#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
