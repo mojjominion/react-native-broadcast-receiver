@@ -3,12 +3,13 @@ import type { EmitterSubscription } from 'react-native';
 type IntentActionConfigTuple = [string, string][];
 type IntentActionConfig = { action: string; datakey: string }[];
 
-interface BarcodeEventData {
+interface BroadcastEventData {
   /**
    * Scanned barcode data from harware scanners
    */
   data: string;
 }
+type BroadcastEventCallback = (d: BroadcastEventData) => void;
 
 interface NativeModuleType {
   getPhoneID(): Promise<string[]>;
@@ -20,7 +21,6 @@ interface BroadcastReceiverInterface {
    * Get device harware id
    */
   getPhoneID(): Promise<string[]>;
-  setIntentActionConfig(args: IntentActionConfig): Promise<boolean>;
   /**
    *
    * @param args ``` [intentAction: string, intentExtrasDataKey: string][] ```
@@ -28,13 +28,15 @@ interface BroadcastReceiverInterface {
    *  - `intentAction` is the actions name that'd be registered for `android.BroadcastReceiver`
    *  - `intentExtrasDataKey` will be used to extract data from the intent
    */
-  addEventListner(cb: (d: BarcodeEventData) => void): EmitterSubscription;
+  setIntentActionConfig(args: IntentActionConfig): Promise<boolean>;
+  addEventListner(cb: BroadcastEventCallback): EmitterSubscription;
 }
 
 export {
-  NativeModuleType as NativeModuleType,
+  NativeModuleType,
   BroadcastReceiverInterface,
   IntentActionConfigTuple,
   IntentActionConfig,
-  BarcodeEventData,
+  BroadcastEventData,
+  BroadcastEventCallback,
 };

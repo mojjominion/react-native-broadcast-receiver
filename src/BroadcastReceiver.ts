@@ -25,7 +25,7 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
         );
   };
 
-  addEventListner(listener: (d: t.BarcodeEventData) => void) {
+  addEventListner(listener: t.BroadcastEventCallback) {
     return nativeEventEmitter.addListener(
       Constants.BROADCAST_EVENT_NAME,
       listener
