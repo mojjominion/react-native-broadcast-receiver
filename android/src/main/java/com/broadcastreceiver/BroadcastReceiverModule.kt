@@ -104,11 +104,7 @@ class BroadcastReceiverModule(reactContext: ReactApplicationContext) :
     }
 
     override fun onHostDestroy() {
-        if (BuildConfig.DEBUG) Log.d(
-            name,
-            "onHostDestroy: unregister receivers"
-        )
-        unregisterBroadcastReceiver()
+        if (BuildConfig.DEBUG) Log.d(name, "onHostDestroy: Destroy host")
     }
     //endregion
 
