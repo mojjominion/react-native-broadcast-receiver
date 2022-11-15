@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { BroadcastReceiver } from 'react-native-broadcast-receiver';
 
 export default function App() {
@@ -17,6 +17,12 @@ export default function App() {
       {scanned.map((t, i) => (
         <Text key={i}>Scanned: {t}</Text>
       ))}
+      <Button
+        title="Send code"
+        onPress={() => BroadcastReceiver.sendEvent('code')}
+      >
+        Send code
+      </Button>
     </View>
   );
 }

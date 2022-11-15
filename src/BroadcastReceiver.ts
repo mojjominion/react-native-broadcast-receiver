@@ -32,6 +32,12 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
     );
   }
 
+  sendEvent(payload: unknown) {
+    return nativeEventEmitter.emit(Constants.BROADCAST_EVENT_NAME, {
+      [Constants.DATA_PROP]: payload,
+    });
+  }
+
   // Start Region :: Native modules methods
   setIntentActionConfig(args: t.IntentActionConfig) {
     return this._nativeModule.setIntentConfig(transformConfig(args));
