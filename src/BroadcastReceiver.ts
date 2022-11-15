@@ -25,11 +25,17 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
         );
   };
 
-  addEventListner(listener: (d: t.BarcodeEventData) => void) {
+  addEventListner(listener: t.BroadcastEventCallback) {
     return nativeEventEmitter.addListener(
       Constants.BROADCAST_EVENT_NAME,
       listener
     );
+  }
+
+  sendEvent(payload: unknown) {
+    return nativeEventEmitter.emit(Constants.BROADCAST_EVENT_NAME, {
+      [Constants.DATA_PROP]: payload,
+    });
   }
 
   // Start Region :: Native modules methods

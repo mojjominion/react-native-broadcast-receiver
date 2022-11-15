@@ -1,4 +1,4 @@
-package com.barcodescannerexample.newarchitecture.components;
+package com.broadcastreceiverexample.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

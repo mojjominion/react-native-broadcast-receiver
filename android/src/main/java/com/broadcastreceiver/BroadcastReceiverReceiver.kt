@@ -1,4 +1,4 @@
-package com.barcodescanner
+package com.broadcastreceiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -6,13 +6,13 @@ import android.content.Intent
 import android.util.Log
 import com.facebook.react.bridge.Arguments
 
-class BarcodeScannerReceiver : BroadcastReceiver() {
+class BroadcastReceiverReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         val data = getDataFromIntent(intent)
         if (data != null && data.isNotEmpty()) {
             val params = Arguments.createMap()
             params.putString(Constants.DataProp, data)
-            BarcodeScannerModule.sendEvent(Constants.BroadcastEventName, params)
+            BroadcastReceiverModule.sendEvent(Constants.BroadcastEventName, params)
         }
     }
 

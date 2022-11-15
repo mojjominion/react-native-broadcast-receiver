@@ -23,10 +23,13 @@ const defaultConfig: IntentActionConfig = [
   //   },
 ];
 
+type Event = 'BROADCAST_EVENT';
+const BROADCAST_EVENT_NAME: Event = 'BROADCAST_EVENT';
+
 const Constants = {
-  BROADCAST_EVENT_NAME: 'BROADCAST_EVENT',
-  MODULE_NAME: 'BARCODE_BROADCAST_RECEIVER',
-  DATA_PROP: 'data',
+  MODULE_NAME: 'RNBroadcastReceiver' as const,
+  DATA_PROP: 'data' as const,
+  BROADCAST_EVENT_NAME,
 };
 
-export { defaultConfig, Constants };
+export { defaultConfig, Constants, Event };

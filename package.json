@@ -1,5 +1,5 @@
 {
-  "name": "barcode-broadcast-receiver",
+  "name": "react-native-broadcast-receiver",
   "version": "0.2.2",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -31,22 +31,25 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it",
+    "release": "dotenv release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install && yarn example pods"
   },
   "keywords": [
     "react-native",
+    "broadcast-receiver",
+    "broadcast",
+    "receiver",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mojjominion/barcode-broadcast-receiver",
+  "repository": "https://github.com/mojjominion/react-native-broadcast-receiver",
   "author": "Mohan <lmohan717@gmail.com> (https://github.com/mojjominion)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mojjominion/barcode-broadcast-receiver/issues"
+    "url": "https://github.com/mojjominion/react-native-broadcast-receiver/issues"
   },
-  "homepage": "https://github.com/mojjominion/barcode-broadcast-receiver#readme",
+  "homepage": "https://github.com/mojjominion/react-native-broadcast-receiver#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -59,6 +62,7 @@
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
     "commitlint": "^17.0.2",
+    "dotenv-cli": "^6.0.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
