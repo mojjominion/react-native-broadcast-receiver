@@ -54,11 +54,9 @@ class BroadcastReceiverModule(reactContext: ReactApplicationContext) :
     @ReactMethod
     fun getPhoneID(promise: Promise) {
         try {
-            val secureId: String =
-                Settings.Secure.getString(
-                    getReactContext().contentResolver,
-                    Settings.Secure.ANDROID_ID
-                )
+            val secureId: String = Settings.Secure.getString(
+                getReactContext().contentResolver, Settings.Secure.ANDROID_ID
+            )
             promise.resolve(Arguments.fromJavaArgs(arrayOf(secureId)))
         } catch (e: Exception) {
             promise.reject(RuntimeException("Could not get unique Id"))
@@ -70,14 +68,15 @@ class BroadcastReceiverModule(reactContext: ReactApplicationContext) :
         lateinit var cReactContext: ReactApplicationContext
 
         fun sendEvent(eventName: String, params: WritableMap) {
-            cReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-                .emit(eventName, params)
+            if (cReactContext.hasCatalystInstance()) {
+                cReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                    .emit(eventName, params)
+            }
         }
     }
 
     private fun registerBroadcastReceiver() {
-        if (BuildConfig.DEBUG)
-            Log.d(name, "register receiver")
+        if (BuildConfig.DEBUG) Log.d(name, "register receiver")
 
         val filter = IntentFilter()
         val filterMap = IntentConfiguration.getMap()
