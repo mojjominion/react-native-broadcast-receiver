@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.IntentFilter
 import android.provider.Settings
 import android.util.Log
+import android.os.Build;
+import android.content.Context;
 import com.facebook.react.BuildConfig
 import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.DeviceEventManagerModule
@@ -84,7 +86,12 @@ class BroadcastReceiverModule(reactContext: ReactApplicationContext) :
         filterMap.forEach { filter.addAction(it.key) }
         filter.addCategory("android.intent.category.DEFAULT")
 
-        getReactContext().registerReceiver(broadcastReceiver, filter)
+        val context = getReactContext()
+        if (Build.VERSION.SDK_INT >= 34 && context.getApplicationInfo().targetSdkVersion >= 34) {
+            context.registerReceiver(broadcastReceiver, filter, Context.RECEIVER_EXPORTED);
+        } else {
+            context.registerReceiver(broadcastReceiver, filter);
+        }
     }
 
     private fun unregisterBroadcastReceiver() {
