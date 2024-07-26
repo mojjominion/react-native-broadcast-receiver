@@ -33,7 +33,8 @@
     "prepare": "bob build",
     "release": "dotenv release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install && yarn example pods"
+    "bootstrap": "yarn example && yarn install && yarn example pods",
+    "broadcast": "adb shell am broadcast -a BROADCAST_BARCODE --es BROADCAST_BARCODE_STRING"
   },
   "keywords": [
     "react-native",

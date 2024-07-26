@@ -32,4 +32,5 @@ const Constants = {
   BROADCAST_EVENT_NAME,
 };
 
-export { defaultConfig, Constants, Event };
+export { defaultConfig, Constants };
+export type { Event };

@@ -1,28 +1,19 @@
-import { NativeEventEmitter, NativeModules } from 'react-native';
+import { NativeEventEmitter } from 'react-native';
 import { Constants, defaultConfig } from './config';
-import { LINKING_ERROR } from './error';
 import type * as t from './types';
 import { transformConfig } from './util';
+import RNBroadcastReceiver from './js/NativeBroadcastReceiver';
 
 const nativeEventEmitter = new NativeEventEmitter();
 class BroadcastReceiver implements t.BroadcastReceiverInterface {
-  private _nativeModule: t.NativeModuleType;
+  private _nativeModule: t.NativeModuleType | undefined;
   constructor(args: t.IntentActionConfig = defaultConfig) {
     this._nativeModule = this.getNativeModule();
     this.setIntentActionConfig(args);
   }
 
-  private getNativeModule = (): t.NativeModuleType => {
-    return Constants.MODULE_NAME in NativeModules
-      ? NativeModules[Constants.MODULE_NAME]
-      : new Proxy(
-          {},
-          {
-            get() {
-              throw new Error(LINKING_ERROR);
-            },
-          }
-        );
+  private getNativeModule = (): t.NativeModuleType | undefined => {
+    return RNBroadcastReceiver;
   };
 
   addEventListner(listener: t.BroadcastEventCallback) {
@@ -40,10 +31,13 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
 
   // Start Region :: Native modules methods
   setIntentActionConfig(args: t.IntentActionConfig) {
-    return this._nativeModule.setIntentConfig(transformConfig(args));
+    return (
+      this._nativeModule?.setIntentConfig(transformConfig(args)) ??
+      Promise.resolve(false)
+    );
   }
   getPhoneID() {
-    return this._nativeModule.getPhoneID();
+    return this._nativeModule?.getPhoneID() ?? Promise.resolve(['']);
   }
 
   // Start Region :: Native modules methods

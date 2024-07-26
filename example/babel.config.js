@@ -13,5 +13,7 @@ module.exports = {
         },
       },
     ],
+    '@babel/plugin-transform-private-methods',
+    '@babel/plugin-proposal-class-properties',
   ],
 };

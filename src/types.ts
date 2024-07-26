@@ -33,7 +33,7 @@ interface BroadcastReceiverInterface {
   addEventListner(cb: BroadcastEventCallback): EmitterSubscription;
 }
 
-export {
+export type {
   NativeModuleType,
   BroadcastReceiverInterface,
   IntentActionConfigTuple,
