@@ -6,8 +6,8 @@ export default function App() {
   const [scanned, setScanned] = React.useState<string[]>(['']);
 
   React.useEffect(() => {
-    const sub = BroadcastReceiver.addEventListner((d) =>
-      setScanned((x) => [...x, d.data])
+    const sub = BroadcastReceiver.addEventListner(d =>
+      setScanned(x => [...x, d.data]),
     );
     return () => sub.remove();
   }, []);
@@ -19,10 +19,10 @@ export default function App() {
       ))}
       <Button
         title="Send code"
-        onPress={() => BroadcastReceiver.sendEvent('code')}
-      >
-        Send code
-      </Button>
+        onPress={() => {
+          BroadcastReceiver.sendEvent('code');
+        }}
+      />
     </View>
   );
 }
