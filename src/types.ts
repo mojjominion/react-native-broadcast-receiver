@@ -8,6 +8,7 @@ interface BroadcastEventData {
   /**
    * Scanned barcode data from harware scanners
    */
+  action: string;
   [Constants.DATA_PROP]: string;
 }
 type BroadcastEventCallback = (d: BroadcastEventData) => void;
