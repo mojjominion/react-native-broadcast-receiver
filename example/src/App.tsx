@@ -6,9 +6,9 @@ export default function App() {
   const [scanned, setScanned] = React.useState<string[]>(['']);
 
   React.useEffect(() => {
-    const sub = BroadcastReceiver.addEventListner(d =>
-      setScanned(x => [...x, d.data]),
-    );
+    const sub = BroadcastReceiver.addEventListner(d => {
+      setScanned(x => [...x, JSON.stringify(d.data)]);
+    });
     return () => sub.remove();
   }, []);
 
