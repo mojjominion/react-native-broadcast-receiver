@@ -6,10 +6,13 @@ type IntentActionConfig = { action: string; datakey: string }[];
 
 interface BroadcastEventData {
   /**
-   * Scanned barcode data from harware scanners
+   * intent that was triggered
    */
   action: string;
-  [Constants.DATA_PROP]: any;
+  /**
+   * Scanned barcode data from harware scanners
+   */
+  [Constants.DATA_PROP]: string | Record<string, string>;
 }
 type BroadcastEventCallback = (d: BroadcastEventData) => void;
 
