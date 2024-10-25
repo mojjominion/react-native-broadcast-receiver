@@ -42,5 +42,8 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
 
   // Start Region :: Native modules methods
 }
-const receiver = new BroadcastReceiver();
+const receiver = new BroadcastReceiver([
+  { action: 'com.string.intent', datakey: 'data' },
+  { action: 'com.record.intent', datakey: '' },
+]);
 export { receiver };

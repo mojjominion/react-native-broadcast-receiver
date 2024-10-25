@@ -29,7 +29,7 @@ import { BroadcastReceiver } from 'react-native-broadcast-receiver';
 BroadcastReceiver.setIntentActionConfig([
   { action: 'com.zzzz.yyyy.action1', datakey: '<data_key1>' },
   { action: 'com.zzzz.yyyy.action2', datakey: '<data_key2>' },
-  { action: 'com.zzzz.yyyy.action3', datakey: '<data_key3>' },
+  { action: 'com.zzzz.yyyy.action3', datakey: '' }, // For empty dataKey an object will be returned instead of a string
 ]);
 
 React.useEffect(() => {
