@@ -1,10 +1,19 @@
-import { NativeEventEmitter } from 'react-native';
+import { NativeEventEmitter, NativeModule, Platform } from 'react-native';
 import { Constants, defaultConfig } from './config';
 import type * as t from './types';
 import { transformConfig } from './util';
 import RNBroadcastReceiver from './js/NativeBroadcastReceiver';
+import { LogBox } from 'react-native';
 
-const nativeEventEmitter = new NativeEventEmitter();
+// Ignore log notification by message
+LogBox.ignoreLogs([
+  '`new NativeEventEmitter()` was called with a non-null argument without the required `addListener` method.',
+  '`new NativeEventEmitter()` was called with a non-null argument without the required `removeListeners` method.',
+]);
+
+const nativeEventEmitter = new NativeEventEmitter(
+  RNBroadcastReceiver as unknown as NativeModule
+);
 class BroadcastReceiver implements t.BroadcastReceiverInterface {
   private _nativeModule: t.NativeModuleType | undefined;
   constructor(args: t.IntentActionConfig = defaultConfig) {
@@ -31,12 +40,14 @@ class BroadcastReceiver implements t.BroadcastReceiverInterface {
 
   // Start Region :: Native modules methods
   setIntentActionConfig(args: t.IntentActionConfig) {
+    if (Platform.OS === 'ios') return Promise.resolve(false);
     return (
       this._nativeModule?.setIntentConfig(transformConfig(args)) ??
       Promise.resolve(false)
     );
   }
   getPhoneID() {
+    if (Platform.OS === 'ios') return Promise.resolve(['']);
     return this._nativeModule?.getPhoneID() ?? Promise.resolve(['']);
   }
 

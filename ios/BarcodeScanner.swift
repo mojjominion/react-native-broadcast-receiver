@@ -1,5 +1,5 @@
-@objc(BroadcastReceiver)
-class BroadcastReceiver: NSObject {
+@objc(RNBroadcastReceiver)
+class RNBroadcastReceiver: NSObject {
 
   @objc(multiply:withB:withResolver:withRejecter:)
   func multiply(a: Float, b: Float, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
