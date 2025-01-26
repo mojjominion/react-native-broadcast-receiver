@@ -74,7 +74,7 @@
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-builder-bob": "^0.20.0",
-    "release-it": "^15.0.0",
+    "release-it": "^18.1.2",
     "typescript": "^5.5.4"
   },
   "resolutions": {
@@ -156,5 +156,6 @@
         }
       ]
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
